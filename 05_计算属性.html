@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <h2>{{firstName}}{{lastName}}</h2>
+        <h2>{{getFullName()}}</h2>
+        <h2>{{fullName}}</h2>
+    </div>
+    <div class="ap1">
+        <h2>总价格：{{totalPrice}}</h2>
+    </div>
+    <script>
+        var ap = new Vue({
+            el: '.ap1',
+            data: {
+                book: [{
+                        id: 110,
+                        name: 110,
+                        price: 110
+                    }, {
+                        id: 111,
+                        name: 111,
+                        price: 111
+                    }, {
+                        id: 112,
+                        name: 112,
+                        price: 112
+                    }, {
+                        id: 113,
+                        name: 113,
+                        price: 113
+                    },
+
+                ]
+            },
+            computed: {
+                totalPrice: function() {
+                    var result = 0
+                    for (var i = 0; i < this.book.length; i++) {
+                        result += this.book[i].price
+                    }
+                    return result
+
+                }
+            }
+
+        });
+        const app = new Vue({
+            el: '#app',
+            data: {
+                firstName: 'lll',
+                lastName: 'fggg'
+            },
+            computed: {
+                // fullName: function() {
+                //     return this.firstName + "   " + this.lastName
+                // }
+                fullName: {
+                    set: function() {
+
+                    },
+                    get: function() {
+                        return this.firstName + "   " + this.lastName
+                    }
+
+                }
+            },
+            methods: {
+                getFullName() {
+                    return this.firstName + "     " + this.lastName
+                }
+            }
+
+        })
+    </script>
+</body>
+
+</html>

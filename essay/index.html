@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <!-- import CSS -->
+    <!-- <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css"> -->
+    <link rel="stylesheet" href="web/index.css">
+    <link rel="stylesheet" type="text/css" href="css/index1.css">
+</head>
+<style>
+    @import url("//unpkg.com/element-ui@2.15.3/lib/theme-chalk/index.css");
+    .a1 {
+        padding-left: 1em;
+    }
+</style>
+
+<body>
+    <!-- <script src="//unpkg.com/vue/dist/vue.js"></script>
+    <script src="//unpkg.com/element-ui@2.15.3/lib/index.js"></script> -->
+    <script src="web/vue.js"></script>
+    <script src="web/index.js"></script>
+    <div class="main">
+        <div id="app1">
+
+            <el-menu :default-active="activeIndex2" class="el-menu-demo" mode="horizontal" @select="handleSelect" background-color="#545c64" text-color="#fff" active-text-color="#ffd04b">
+                <el-menu-item index="1">
+                    <el-link :underline="false">首页</el-link>
+                </el-menu-item>
+                <el-menu-item index="2">
+                    <el-link :underline="false">
+                        <el-link :underline="false" href="essaylist.html" target="_blank">文章列表</el-link>
+                    </el-link>
+                </el-menu-item>
+                <el-menu-item index="3">
+                    <el-link :underline="false">文章详情</el-link>
+                </el-menu-item>
+            </el-menu>
+        </div>
+        <div>
+            <div class="left">
+                <div class="left1">
+                    <span>图文天地</span>
+                    <div class="left0"></div>
+                </div>
+
+
+                <div class="left2" id="pic">
+                    <template>
+                    <el-carousel :interval="5000" arrow="always">
+                      <el-carousel-item v-for="item in img" :key="item">
+                        <img :src="item.pic" :title="item.title">
+                      </el-carousel-item>
+                    </el-carousel>
+                  </template>
+                </div>
+            </div>
+            <div class="right">
+                <div class="right1">
+                    <span>最新推荐</span>
+                    <div class="right0"></div>
+                </div>
+
+                <div id="sw">
+                    <div class="right2">
+                        <div class="r" v-for="(s,index) in sw">
+                            <div class="r1"><span style="font-size: 16px; color:#c29937; margin: auto;">> [{{s.type}}]</span></div>
+                            <div class="r2" :title="s.title"><span style="font-size: 16px; color: black; margin: auto;"><a :href="'essaydetail2.html?tj='+index">{{s.title}}</a></span></div>
+                            <div class="r3">{{s.time}}</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="all">
+            <div class="div1">
+                <div class="span1">
+                    诗<br>歌<br>词<br>赋
+                </div>
+                <div v-for="(s,index) in books">
+                    <div v-if="index==0" class=".line-limit-length">
+                        <ul class="ul1">
+                            <li v-for="(ss,index1) in s.book">[{{ss.type}}]<span style="color: black;" :title="ss.title"><a :href="'essaydetail1.html?id='+index+'&id1='+index1" class="a1">{{ss.title}}</a></span></li>
+
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="span2">
+                    生<br>活<br>随<br>笔
+                </div>
+                <div v-for="(s,index) in books">
+                    <div v-if="index==1" class=".line-limit-length">
+                        <ul class="ul1">
+                            <li v-for="(ss,index1) in s.book">[{{ss.type}}]<span style="color: black;" :title="ss.title"><a :href="'essaydetail1.html?id='+index+'&id1='+index1" class="a1">{{ss.title}}</a></span></li>
+
+                        </ul>
+                    </div>
+                </div>
+                <div class="span3">
+                    杂<br>闻<br>趣<br>事
+                </div>
+                <div v-for="(s,index) in books">
+                    <div v-if="index==2" class=".line-limit-length">
+                        <ul class="ul1">
+                            <li v-for="(ss,index1) in s.book">[{{ss.type}}]<span style="color: black;" :title="ss.title"><a :href="'essaydetail1.html?id='+index+'&id1='+index1" class="a1">{{ss.title}}</a></span></li>
+
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="div3">
+                <div class="left">
+                    <div class="left1">
+                        <span>金典美文</span>
+                        <div class="left0"></div>
+                    </div>
+                    <div class="left2">
+                        <div v-for="(s,index) in books">
+                            <div class="r" v-if="index==3">
+                                <div v-for="(ss,index1) in s.book">
+                                    <div class="r1"><span style="font-size: 16px; color:#c29937; margin: auto;">> [{{ss.type}}]</span></div>
+                                    <div class="r2" :title="ss.title"><span style="font-size: 16px; color: black; margin: auto;"><a :href="'essaydetail1.html?id='+index+'&id1='+index1">{{ss.title}}</a></span></div>
+                                    <div class="r3">{{ss.time}}</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="right">
+                    <div class="right1">
+                        <span>散文角落</span>
+                        <div class="right0"></div>
+                    </div>
+                    <div class="right2">
+                        <div v-for="(s,index) in books">
+                            <div class="r" v-if="index==4">
+                                <div v-for="(ss,index1) in s.book">
+                                    <div class="r1"><span style="font-size: 16px; color:#c29937; margin: auto;">> [{{ss.type}}]</span></div>
+                                    <div class="r2" :title="ss.title"><span style="font-size: 16px; color: black; margin: auto;"><a :href="'essaydetail1.html?id='+index+'&id1='+index1">{{ss.title}}</a></span></div>
+                                    <div class="r3">{{ss.time}}</div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<!-- import Vue before Element -->
+<script src="https://unpkg.com/vue/dist/vue.js"></script>
+<!-- import JavaScript -->
+<script src="https://unpkg.com/element-ui/lib/index.js"></script>
+<script src="js/index.js"></script>
+<script>
+    var Main = {
+        data() {
+            return {
+                activeIndex: '1',
+                activeIndex2: '1'
+            };
+        },
+        methods: {
+            handleSelect(key, keyPath) {
+                console.log(key, keyPath);
+            }
+        }
+    }
+    var Ctor = Vue.extend(Main)
+    new Ctor().$mount('#app1')
+</script>
+
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>class与style绑定</title>
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <div v-bind:class="[isActive ? 'active' : '', isGreen ? 'green' : '']" style="width:200px;height:200px;line-height:200px;text-align:center;">
+            hi vue
+        </div>
+        <div :style="{color:color,fontSize:size,background:isRed ? '#000':''}">
+            hi vue2
+        </div>
+    </div>
+
+    <script>
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                isActive: true,
+                isGreen: true,
+                color: '#ff0000',
+                size: '50px',
+                isRed: true
+
+            }
+        });
+    </script>
+    <style>
+        .test {
+            font-size: 30px;
+        }
+        
+        .active {
+            background: #f00;
+        }
+        
+        .green {
+            color: #0f0;
+        }
+    </style>
+</body>
+
+</html>

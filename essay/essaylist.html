@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <!-- import CSS -->
+    <!-- <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css"> -->
+    <link rel="stylesheet" href="web/index.css">
+    <link rel="stylesheet" type="text/css" href="css/essaylist.css">
+</head>
+<style>
+    @import url("//unpkg.com/element-ui@2.15.3/lib/theme-chalk/essaylist.css");
+</style>
+
+<body>
+    <!-- <script src="//unpkg.com/vue/dist/vue.js"></script> -->
+    <!-- <script src="//unpkg.com/element-ui@2.15.3/lib/index.js"></script> -->
+    <script src="web/vue.js"></script>
+    <script src="web/index.js"></script>
+
+    <div class="main">
+        <div id="app1">
+
+            <el-menu :default-active="activeIndex2" class="el-menu-demo" mode="horizontal" @select="handleSelect" background-color="#545c64" text-color="#fff" active-text-color="#ffd04b">
+                <el-menu-item index="1">
+                    <el-link :underline="false" href="index.html">首页</el-link>
+                </el-menu-item>
+                <el-menu-item index="2">
+                    <el-link :underline="false">文章列表</el-link>
+                </el-menu-item>
+                <el-menu-item index="3">
+                    <el-link :underline="false">文章详情</el-link>
+                </el-menu-item>
+            </el-menu>
+        </div>
+        <div class="div1" id="all">
+            <div class="left">
+                <div class="listTitle">
+                    <h2>文章大全</h2>
+                </div>
+                <div class="contentMain" v-for="(s,index) in books">
+                    <div class="itemDiv" v-for="(ss,index1) in s.book">
+                        <div class="itemDivTitle">
+                            <a :href="'essaydetail1.html?id='+index+'&id1='+index1">{{ss.title}}</a>
+                        </div>
+                        <div class="itemDivContent">{{ss.content}}</div>
+                        <div class="itemDivRemark">
+                            <span>发表时间：{{ss.time}}</span>
+                            <span class="spanAuthor">作者:{{ss.author}}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="right">
+                <div class="right1Main">
+                    <span class="right1Span">[文章]栏目导航</span>
+                    <div class="right1Div">
+                        <a class="aType8 itemdh" v-for="ss in books">{{ss.types}}</a>
+                    </div>
+                </div>
+                <div class="right2Title">
+                    <span class="s1"></span>
+                    <span class="s2">本栏热门推荐</span>
+                    <span class="s3"></span>
+                </div>
+                <div class="right2Main" id="sw">
+                    <ul class="ulhot mat5px">
+                        <li v-for="(s,index) in sw">
+                            <span class="spanback"></span>
+                            <span class="spanleft">{{index+1}}</span>
+                            <a class="aType spantitle" :title="s.title" :href="'essaydetail2.html?tj='+index">{{s.title}}</a>
+                            <span class="spanright">{{s.author}}</span>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</body>
+<!-- import Vue before Element -->
+<script src="https://unpkg.com/vue/dist/vue.js"></script>
+<!-- import JavaScript -->
+<script src="https://unpkg.com/element-ui/lib/index.js"></script>
+<script src="js/index.js"></script>
+<script>
+    var Main = {
+        data() {
+            return {
+                activeIndex: '2',
+                activeIndex2: '2'
+            };
+        },
+        methods: {
+            handleSelect(key, keyPath) {
+                console.log(key, keyPath);
+            }
+        }
+    }
+    var Ctor = Vue.extend(Main)
+    new Ctor().$mount('#app1')
+</script>
+
+</html>

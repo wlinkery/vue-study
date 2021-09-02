@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <!-- import CSS -->
+    <!-- <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css"> -->
+    <link rel="stylesheet" href="web/index.css">
+    <link rel="stylesheet" type="text/css" href="css/essaydetail.css">
+</head>
+<style>
+    @import url("//unpkg.com/element-ui@2.15.3/lib/theme-chalk/essaylist.css");
+</style>
+
+<!-- <body>
+    <script src="//unpkg.com/vue/dist/vue.js"></script>
+    <script src="//unpkg.com/element-ui@2.15.3/lib/index.js"></script> -->
+<script src="web/vue.js"></script>
+<script src="web/index.js"></script>
+<div class="main">
+    <div id="app1">
+
+        <el-menu :default-active="activeIndex2" class="el-menu-demo" mode="horizontal" @select="handleSelect" background-color="#545c64" text-color="#fff" active-text-color="#ffd04b">
+            <el-menu-item index="1">
+                <el-link :underline="false" href="index.html">首页</el-link>
+            </el-menu-item>
+            <el-menu-item index="2">
+                <el-link :underline="false" href="essaylist.html">文章列表</el-link>
+            </el-menu-item>
+            <el-menu-item index="3">
+                <el-link :underline="false">文章详情</el-link>
+            </el-menu-item>
+        </el-menu>
+    </div>
+    <div id="sw">
+        <div class="div1">
+            <div class="left">
+                <div class="mapDiv">
+                    <div class="themeDiv">
+                        <span class="myskin6"></span>
+                        <span class="myskin5"></span>
+                        <span class="myskin4"></span>
+                        <span class="myskin3"></span>
+                        <span class="myskin2"></span>
+                        <span class="myskin1"></span>
+                        <span class="myskin6"></span>
+                        <span class="myskin5"></span>
+                        <span class="myskin4"></span>
+                        <span class="myskin3"></span>
+                        <span class="myskin2"></span>
+                        <span class="myskin1"></span>
+                        <span class="myskin6"></span>
+                        <span class="myskin5"></span>
+                        <span class="myskin4"></span>
+                        <span class="myskin3"></span>
+                        <span class="myskin2"></span>
+                        <span class="myskin1"></span>
+                        <span class="myskin6"></span>
+                        <span class="myskin5"></span>
+                        <span class="myskin4"></span>
+                        <span class="myskin3"></span>
+                        <span class="myskin2"></span>
+                        <span class="myskin1"></span>
+                    </div>
+                </div>
+                <div>
+                    <div>
+                        <div class="artContentArea" v-for="(s,index) in sw">
+                            <div class="artMain" v-if="index==tjid">
+                                <div class="mainTitle">
+                                    <h1>{{s.title}}</h1>
+                                </div>
+                                <div class="mainAbout">
+                                    <span>发表时间：{{s.time}}&nbsp;</span>
+                                    <span>作者：&nbsp;{{s.author}}</span>
+                                </div>
+                                <div class="mainContent">{{s.content}}</div>
+                                <br><br><br><br><br><br><br><br><br><br>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="shareDiv">
+                    <span class="shareTheSpan">分享到：</span>
+                    <div class="bdsharebuttonbox bdshare-button-style0-16">
+                        <a class="share1" title="分享到QQ好友"></a>
+                        <a class="share2" title="分享到新浪微博"></a>
+                        <a class="share3" title="分享到腾讯微博"></a>
+                        <a class="share4" title="分享到微信"></a>
+                        <a class="share5" title="分享到QQ空间"></a>
+                        <a class="share6" title="分享到百度贴吧"></a>
+                    </div>
+                    <div class="doDiv">
+                        <a class="btnAddArt">写文章</a>
+                        <input class="btnCollect" type="button" value="收藏">
+                        <input class="btnLove" type="button" value="点赞">
+                    </div>
+                </div>
+            </div>
+            <div class="right">
+                <div class="authorMain">
+                    <span class="authorName">作者信息</span>
+                    <div class="authorContent">
+                        <div class="authorContentMain">
+                            <div class="thepicDiv">
+                                <img src="	http://www.wenzizhan.com/Img/header/header_01.png">
+                            </div>
+                            <div class="theAuthorMain">
+
+                                <div v-for="(ss,index) in sw">
+                                    <div v-if="index==tjid">
+                                        <span class="theSpanLeft">作者昵称:</span>
+                                        <a class="aType5">{{ss.author}}</a>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="authorSignDiv">
+                            <span class="s1">个性签名：&nbsp;&nbsp;暂无</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="right2Title">
+                    <span class="s1"></span>
+                    <span class="s2">本栏热门推荐</span>
+                    <span class="s3"></span>
+                </div>
+                <div class="right2Main">
+                    <ul class="ulhot mat5px">
+                        <li v-for="(s,index) in sw">
+                            <span class="spanback"></span>
+                            <span class="spanleft">{{index+1}}</span>
+                            <a class="aType spantitle" :title="s.title">{{s.title}}</a>
+                            <span class="spanright">{{s.author}}</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+
+<!-- import Vue before Element -->
+<script src="https://unpkg.com/vue/dist/vue.js"></script>
+<!-- import JavaScript -->
+<script src="https://unpkg.com/element-ui/lib/index.js"></script>
+<script src="js/index.js"></script>
+
+<script>
+    var Main = {
+        data() {
+            return {
+                activeIndex: '3',
+                activeIndex2: '3'
+            };
+        },
+        methods: {
+            handleSelect(key, keyPath) {
+                console.log(key, keyPath);
+            }
+        }
+    }
+    var Ctor = Vue.extend(Main)
+    new Ctor().$mount('#app1')
+</script>
+
+</html>

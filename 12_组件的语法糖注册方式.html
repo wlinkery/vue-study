@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <cpn1></cpn1>
+        <cpn2></cpn2>
+        <cpn></cpn>
+        <cpdd></cpdd>
+    </div>
+</body>
+<template id="cpdd">
+    <div>
+        <h1>物品是标题4{{title}}</h1>
+        <p>hhhhhh</p>
+    </div>
+
+</template>
+<script type="text/x-template" id="cpn">
+    <div>
+        <h1>物品是标题3</h1>
+        <p>hhhhhh</p>
+    </div>
+
+</script>
+<script>
+    Vue.component('cpn', {
+        template: '#cpn'
+    })
+    Vue.component('cpdd', {
+        template: '#cpdd',
+        data() {
+            return {
+                title: 'owowowowoow'
+            }
+
+
+        }
+    })
+    Vue.component('cpn1', {
+        template: `
+        <div><h1>物品是标题1</h1>
+            <p>hhhhhh</p>
+            </div>
+        `
+    })
+    new Vue({
+        el: '#app',
+        data: {
+
+        },
+        components: {
+            'cpn2': {
+                template: `
+        <div><h1>物品是标题2</h1>
+            <p>hhhhhh</p>
+            <cpn1></cpn1>
+            </d`
+            }
+
+        }
+    })
+</script>
+
+</html>

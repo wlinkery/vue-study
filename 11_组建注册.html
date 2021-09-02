@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>组件基础</title>
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+</head>
+
+<body>
+    <div id="components-demo">
+        <button-counter title="title1: " @clicknow="clicknow"></button-counter>
+        <button-counter title="title2: "></button-counter>
+        <test></test>
+        <test></test>
+        <test1></test1>
+        <my-cpn></my-cpn>
+    </div>
+
+    <script>
+        // 组件的使用分三步：1：创建组件构造器
+        // 2：注册组件
+        // 3：使用组件
+
+        const cpnc = Vue.extend({
+            template: `<div><h2>我是标签</h2>
+        <p>hhhhhhhh</p>
+        <p>llllllllll</p>
+        </div>
+
+        `
+        })
+        Vue.component('my-cpn', cpnc)
+
+        // 定义一个名为 button-counter 的新组件
+        Vue.component('button-counter', {
+            props: ['title'],
+            data: function() {
+                return {
+                    count: 0
+                }
+            },
+            template: '<div><h4>hhh</h4><button v-on:click="clickfun">{{title}} You clicked me {{ count }} times.</button></div>',
+            methods: {
+                clickfun: function() {
+                    this.count++;
+                    this.$emit('clicknow', this.count);
+                }
+            }
+        })
+
+        // 定义一个名为 button-counter 的新组件
+        Vue.component('button-counter1', {
+            props: ['title'],
+            data: function() {
+                return {}
+            },
+            template: '<div><h1>hello。。</h1></div>',
+            methods: {
+
+            }
+        })
+
+
+
+        new Vue({
+            el: '#components-demo',
+            data: {
+
+            },
+            methods: {
+                clicknow: function() {
+                    alert("hh");
+                }
+            },
+            components: {
+                test: {
+                    template: "<h2>h2...</h2>"
+                },
+                test1: {
+                    template: `<h1>这是test1<h1>`
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

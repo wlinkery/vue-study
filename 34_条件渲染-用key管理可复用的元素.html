@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<script src="https://cdn.staticfile.org/vue/2.2.2/vue.js"></script>
+<html>
+<head>
+<meta charset="utf-8">
+<title>文档标题</title>
+</head>
+<body>
+  <div id ="app2">
+    <template v-if="loginType === 'username'">
+    <label>Username</label>
+    <input placeholder="Enter your username" key="username-input">
+    </template>
+    <template v-else>
+      <label>Email</label>
+      <input placeholder="Enter your email address" key="email-input">
+    </template>
+    <button v-on:click="changeType">
+      更改类型
+    </button>
+	  
+  </div>
+	<br>
+
+	<div id="app">
+		<div v-if="type==='in'">
+			<label>input</label>
+			<input placeholder="input">			
+		</div>
+		<div v-if="type=='out'">
+			<label>output</label>
+			<input placeholder="output">			
+		</div>
+		<button v-on:click="change">
+      更改类型
+    </button>
+	</div>
+  <script>
+	 new Vue({
+		 el:'#app',
+		 data:{
+			 type:'in'
+		 },
+		 methods:{
+			 change:function(){
+				 if(this.type=='in'){
+					 this.type='out';
+				 }else{
+					 this.type='in';
+				 }
+			 }
+		 }
+	 
+	 })
+	  app2 = new Vue({
+  el:"#app2",
+  data:{
+    loginType:'username'
+  },
+  methods:{
+    changeType:function(){
+    if(this.loginType=='username'){
+    this.loginType='Email'
+  	}else{
+    this.loginType='username'      
+     }
+  	}
+  }
+})
+	</script>
+</body>
+  
+</html>

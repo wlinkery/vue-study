@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../Vue学习/JS/vue.js"></script>
+</head>
+
+<body>
+
+    <!-- 1。插槽的基本使用<slot></slot>
+    2.插槽的默认值<slot>button</slot> 
+3.人工有多个元素在里面，会被当做一个放入-->
+    <div id="app">
+        <cpn><button>ok</button></cpn>
+        <cpn>
+            <i>hhhh</i>
+            <div>我是div元素</div>
+            <p>我是p元素</p>
+        </cpn>
+        <cpn><button>按钮</button></cpn>
+        <cpn></cpn>
+    </div>
+
+    <template id="cpn">
+    <div>
+       <h2>我是cpn组件</h2>
+      <p>我是组件哈哈哈哈哈</p>
+      <!-- <button>按钮</button> -->
+      <slot><button>阿牛啊</button></slot>
+    </div>
+</template>
+
+
+
+
+    <script>
+        const app = new Vue({
+            el: '#app',
+            data: {
+                message: '这是vue实例的message'
+            },
+
+            components: {
+                cpn: {
+                    template: '#cpn',
+                    data() {
+                        return {
+                            name: '我是cpn组件的name'
+                        }
+                    }
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

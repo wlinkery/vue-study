@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Vue.js 导航菜单</title>
+    <script src="https://cdn.staticfile.org/vue/2.4.2/vue.min.js"></script>
+    <style>
+body {
+  background: #000;
+  color: cyan;
+}
+.edit {
+  border: solid;
+  border-width: 3px;
+  border-radius: 5px;
+  border-color: #f44336;
+  font-size: 70px;
+  padding: 5px;
+  margin: 10px;
+}
+img{
+  width: 80px;
+  height: 80px;
+}
+h2 {
+  margin-left: 15px;
+}
+
+    </style>
+
+</head>
+<body>
+<script src="https://cdn.staticfile.org/vue/2.2.2/vue.min.js"></script>
+<div id="vApp">
+    <!-- v-else-if 在 2.1.0 新增，顾名思义，用作 v-if 的 else-if 块。可以链式的多次使用-->
+    <input type="text" class="edit" placeholder="判断输入的字符长度" v-model="inp">
+    <h2 v-if="calLen(inp)>10">输入的字符长度大于10</h2>
+    <h2 v-else-if="calLen(inp)>5">输入的字符长度大于5</h2>
+    <h2 v-else-if="calLen(inp)>0">输入了字符</h2>
+    <h2 v-else>没有输入字符</h2>
+    <div>
+        <!--也可以使用 v-show 指令来根据条件展示元素-->
+        <img src="https://static.runoob.com/images/mix/Vue-c1404f26d2d428847a0dbbfe214914c207716c77/asset/img/ic_user.png" v-show="calLen(inp)<=0">
+        <img src="https://static.runoob.com/images/mix/Vue-c1404f26d2d428847a0dbbfe214914c207716c77/asset/img/ic_question.png" v-show="calLen(inp)>0">
+        <img src="https://static.runoob.com/images/mix/Vue-c1404f26d2d428847a0dbbfe214914c207716c77/asset/img/ic_stop.png" v-show="calLen(inp)>5">
+        <img src="https://static.runoob.com/images/mix/Vue-c1404f26d2d428847a0dbbfe214914c207716c77/asset/img/ic_info.png" v-show="calLen(inp)>10">
+    </div>
+</div>
+<script>
+new Vue({
+  el: '#vApp',
+  data: {
+    inp: ''
+  },
+  methods: {
+    calLen: function (n) {
+      if (!n) {
+        return 0;
+      } else {
+        return n.split('').length;
+      }
+    }
+  }
+})
+</script>
+</body>
+</html>

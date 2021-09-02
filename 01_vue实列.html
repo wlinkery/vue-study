@@ -1,0 +1,71 @@
+<script src="https://cdn.staticfile.org/vue/2.2.2/vue.min.js"></script>
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>文档标题</title>
+</head>
+
+<body>
+    <h1>我的第一个HTML页面</h1>
+    <p>我的第一个段落。</p>
+    <p>options:el;data;methods
+
+    </p>
+    <p></p>
+    <div id="app">
+        {{message}} {{name}}
+        <ul>
+            <li v-for='v in ms'>{{v}}</li>
+        </ul>
+    </div>
+    <div class="app">
+
+        {{a}}
+    </div>
+    <div id="demo">
+        当前数字：{{counter}}
+        <!-- <button @click="counter++">+</button>
+        <button @click="counter--">-</button> -->
+        <button @click="add">+</button>
+        <button @click="sub">-</button>
+    </div>
+    <script type="text/javascript">
+        var data = {
+            a: 1
+        };
+        var aa = new Vue({
+            el: '#demo',
+            data: {
+                counter: 0
+            },
+            methods: {
+                add: function() {
+                    this.counter++
+                },
+                sub: function() {
+                    this.counter--
+                }
+            }
+        })
+        var app = new Vue({
+            el: '#app',
+            data: {
+                message: 'hello world',
+                name: 'hhhh',
+                ms: ['111', '222', '333', '444']
+            }
+        })
+        var vm = new Vue({
+                el: '.app',
+                data: data
+            })
+            //data.a="hi ...   new  ...";
+            //vm.a="hhhhhhhh1";
+            //   vm.$data.a = "testmmmmm";
+            //   vm.$watch('a', fnction(newVal, oldVal));
+    </script>
+</body>
+
+</html>

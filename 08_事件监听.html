@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>事件处理</title>
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <div id="example-1">
+            <h2>{{counter}}</h2>
+            <!-- <button v-on:click="counter += 1">++</button>
+            <button v-on:click="counter += 1">--</button> -->
+            <!-- <button v-on:click="add()">++</button>
+            <button v-on:click="sub()">--</button> -->
+            <button @click="add()">++</button>
+            <button @click="sub()">--</button>
+        </div>
+    </div>
+    <div id="demo">
+        <p style="color: red;font-size: 20px;">不带参数</p>
+        <button @click="btnClick()">按钮1</button>
+        <button @click="btnClick">按钮2</button>
+        <p style="color: red;font-size: 20px;">带参数</p>
+        <button @click="btn2Click()">按钮3</button>
+        <button @click="btn2Click">按钮4</button>
+        <button @click="btn3Click(123,event)">按钮5</button>
+
+        <p style="color: red;font-size: 20px;">.stop阻止冒泡</p>
+        <div @click="divClick">
+            hhhhhh
+            <button @click.stop="btn1Click">按钮0</button>
+        </div>
+        <p style="color: red;font-size: 20px;">.prevent</p>
+        <form action="baidu">
+            <input type="submit" value="提交" @click.prevent="submitClick">
+        </form>
+        <p style="color: red;font-size: 20px;">监听莫个键盘得键帽</p>
+        <input type="text" @keyup.enter="keyup">
+        <cpn @click.native="cpnClick"></cpn>
+
+    </div>
+
+    <script>
+        const app = new Vue({
+            el: '#demo',
+            data: {
+                event: "codewhy"
+
+            },
+            methods: {
+                btnClick: function() {
+                    console.log('btnVlick')
+                },
+                btn2Click: function(event) {
+                    console.log('11', event)
+                },
+                btn3Click: function(abc, event) {
+                    console.log('11', abc, event)
+                },
+                btn1Click: function() {
+                    console.log("btn1Click")
+                },
+                divClick() {
+                    console.log('divClick')
+                },
+                submit: function() {
+                    console.log('submitClick')
+                },
+                keyup() {
+                    console.log('keyup')
+                }
+
+            }
+        })
+        var example1 = new Vue({
+            el: '#app',
+            data: {
+                counter: 0,
+                name: 'Vue.js'
+            },
+            // 在 `methods` 对象中定义方法
+            methods: {
+                add: function() {
+                    this.counter++
+                },
+                sub: function() {
+                    this.counter--
+                }
+
+            }
+        });
+    </script>
+    <style>
+
+    </style>
+</body>
+
+</html>
